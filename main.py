@@ -1,9 +1,13 @@
-from Labs.src.DealorNoDeal.dealOrNoDeal.deal import Deal
+from deal import Deal
+from dealController import *
 
 
 def main():
-    game = Deal()
-    game.run_game()
+    app = QApplication([])
+    window = DealScreen()
+    window.show()
+    app.exec_()
+    window.show()
 
 
 if __name__ == '__main__':
