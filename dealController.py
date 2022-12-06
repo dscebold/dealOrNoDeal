@@ -66,7 +66,7 @@ class DealScreen(QMainWindow, Ui_DealOrNoDeal):
             self.holder[num] = temp
             values.remove(temp)
 
-    def case_choice(self, case):
+    def case_choice(self, case: QPushButton):
         self.count += 1
         if not self.has_case:
             self.current_case = case
