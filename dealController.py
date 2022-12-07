@@ -66,7 +66,16 @@ class DealScreen(QMainWindow, Ui_DealOrNoDeal):
             self.holder[num] = temp
             values.remove(temp)
 
+
+
+
     def case_choice(self, case: QPushButton):
+        '''
+        if you do not have a case assigns you the case you chose
+        if you have a case it shows the decision screen, hides the case screen, and assigns the case you chose to the hold case variable
+        :param case: the case that you selected from the screen
+        :return:NA
+        '''
         self.count += 1
         if not self.has_case:
             self.current_case = case
@@ -82,6 +91,11 @@ class DealScreen(QMainWindow, Ui_DealOrNoDeal):
 
 
     def open_click(self):
+        '''
+        Opens the case you selected in the case choice method, hides the decision screen, shows the case screen,
+        and updates the text at the bottom of the case screen if it is the final case.
+        :return:NA
+        '''
         self.case_to_open = self.hold_case
         self.case_to_open.hide()
         self.show()
@@ -93,6 +107,12 @@ class DealScreen(QMainWindow, Ui_DealOrNoDeal):
 
 
     def switch_click(self):
+        """
+        Opens the case you had chosen to be your own and assigns the case you chose in the case screen to be your own,
+        hides the decision screen, shows the case screen, and updates the text at the bottom of the case screen if it
+        is the final case.
+        :return:
+        """
         self.case_to_open = self.current_case
         self.current_case = self.hold_case
         for check_case in self.cases:
@@ -107,6 +127,11 @@ class DealScreen(QMainWindow, Ui_DealOrNoDeal):
 
 
     def update_label(self):
+        """
+        Updates the text at the bottom of the case screen to show the case you currently hold as well as the case you
+        just opened.
+        :return:NA
+        """
         self.money.setText(f"Your currently have Case {self.current_case.text()}\nYou opened Case {self.case_to_open.text()}"
                            f" and lost ${self.holder[int(self.case_to_open.text())]}")
 
